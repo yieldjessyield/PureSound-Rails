@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :authenticate_user, only: [:create]
+  skip_before_action :authenticate_user, only: [:create, :show]
 
   def create
     user = User.new(user_params)
@@ -7,7 +7,6 @@ class UsersController < ApplicationController
     if user.save
      jwt = Auth.issue({user_id: user.id})
      email = user.email
-     password = user.password
      phone_number = user.phone_number
      render json: {jwt: jwt, userEmail: email, userPhoneNumber: phone_number}
 
@@ -20,9 +19,8 @@ class UsersController < ApplicationController
 
   end
 
-  def show(user_id)
-    @user = User.find(user_id)
-    render json: @user
+  def show
+
   end
 
 private
