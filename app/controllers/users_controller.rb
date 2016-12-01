@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
+  # skip_before_action :authenticate_user, only: [:create]
 
-  def create(user_data)
+  def create
+    byebug
     email = user_data.email
   end
 
