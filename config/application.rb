@@ -16,6 +16,8 @@ require "action_cable/engine"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+# RSpotify::authenticate(ENV["client_id"], "<your_client_secret>")
+
 module PureSoundRails
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
