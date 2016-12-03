@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
 
   def create
-    byebug
+    # byebug
     user = User.new(user_params)
 
     if user.save

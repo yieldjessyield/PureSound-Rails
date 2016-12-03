@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :users
+  resources :artists
   # post '/users/spotify', to: 'users#spotify'
 
   resources :sessions
