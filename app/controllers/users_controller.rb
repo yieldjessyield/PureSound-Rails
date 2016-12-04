@@ -7,10 +7,12 @@ class UsersController < ApplicationController
     user = User.new(user_params)
 
     if user.save
-     jwt = Auth.issue({user_id: user.id})
-     email = user.email
-     phone_number = user.phone_number
-     render json: {jwt: jwt, userEmail: email, userPhoneNumber: phone_number}
+
+      jwt = Auth.issue({user_id: user.id})
+      email = user.email
+      phone_number = user.phone_number
+      id = user.id
+      render json: {jwt: jwt, userId: id, userEmail: email, userPhoneNumber: phone_number}
 
    else
      render json: {error: 'email is not unique'}
@@ -30,7 +32,7 @@ private
 
   def user_params
     # this is strong params
-    params.require(:user).permit(:email, :password, :phone_number)
+    params.require(:user).permit(:email, :password, :phone_number, :artists)
     # changed :user from :auth
   end
 
