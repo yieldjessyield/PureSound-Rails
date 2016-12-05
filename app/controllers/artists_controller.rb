@@ -44,6 +44,18 @@ class ArtistsController < ApplicationController
     render json: {liked_artists: liked_artists}
   end
 
+  # this is called after a user logs in and is used to grab the user's previously liked artists
+  def liked_artists()
+    user = User.find(current_user.id)
+    liked_artists = user.artists
+    send_artists = []
+    liked_artists.each do |artist|
+      send_artists << artist
+    end
+    # byebug
+    render json: {liked_artists: send_artists}
+  end
+
   # private
   # # something is off with the params and passing this crap in :(
   # def artists_params
