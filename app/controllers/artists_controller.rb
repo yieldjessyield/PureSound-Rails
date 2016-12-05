@@ -8,6 +8,9 @@ class ArtistsController < ApplicationController
 
   def create
    byebug
+   artist1 = params["artistsData"]["artist1"]["artist_spotify_id"]
+   artist2 = params["artistsData"]["artist2"]
+   artist3 = params["artistsData"]["artist3"]
     # user_data:{id: id, artists: [{artist_data}, {artist_data}, {artist_data}]}
     # make sure artist id is an integer
     user = User.find(user_data.id)
@@ -25,7 +28,9 @@ class ArtistsController < ApplicationController
   private
   # something is off with the params and passing this crap in :(
   def artists_params
-    params.require(:artists).permit(:artistsData)
+    # params.require(:artists).permit(:artistsData)
+    # params.require(:artists).permit(artistsData: [ artist1: [:artist_spotify_id, :name, :image], artist2: [:artist_spotify_id, :name, :image], artist3: [:artist_spotify_id, :name, :image] ])
+    params.require(:artists).permit(:artistsData => [:artist1 => {:artist_spotify_id :name :image} :artist2 => {:artist_spotify_id :name :image} :artist3 => {:artist_spotify_id :name :image}])
   end
 
 end
