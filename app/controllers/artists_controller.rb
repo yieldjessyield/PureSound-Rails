@@ -43,7 +43,7 @@ class ArtistsController < ApplicationController
   end
 
   # this is called after a user logs in and is used to grab the user's previously liked artists
-  def liked_artists()
+  def liked_artists
     user = User.find(current_user.id)
     liked_artists = user.artists
     send_artists = []
@@ -52,6 +52,28 @@ class ArtistsController < ApplicationController
     end
     # byebug
     render json: {liked_artists: send_artists}
+  end
+
+  def save_liked_artist
+    user = User.find(current_user.id)
+
+    check_user_artists = []
+    liked_artists = []
+
+    user.artists.each do |artist|
+      check_user_artists << artist.artist_spotify_id
+    end
+    if check_user_artists.include?(params["likedArtistData"]["spotify_id"])
+      render json: {liked_artists: user.artists}
+    else
+      # make sure these params are ok above and below
+      new_artist = Artist.find_or_create_by(artist_spotify_id: params["likedArtistData"]["spotify_id"], name: params["likedArtistData"]["name"], image: params["likedArtistData"]["image"])
+      UserArtist.find_or_create_by(artist_id: new_artist.id, user_id: user.id)
+
+      # byebug
+        render json: {liked_artists: user.artists.reload}
+      # check this
+    end
   end
 
   # private
