@@ -11,21 +11,19 @@ class ArtistsController < ApplicationController
     artist2 = {}
     artist3 = {}
 
-   artist1["artist_spotify_id"] = params["artists"]["artistsData"][0]["artist_spotify_id"]
-   artist1["name"] = params["artists"]["artistsData"][0]["name"]
-   artist1["image"] = params["artists"]["artistsData"][0]["image"]
+   artist1["artist_spotify_id"] = params["artists"]["artistsData"][0]["artistId"]
+   artist1["name"] = params["artists"]["artistsData"][0]["artistName"]
+   artist1["image"] = params["artists"]["artistsData"][0]["artistUrl"]
 
-   artist2["artist_spotify_id"] = params["artists"]["artistsData"][1]["artist_spotify_id"]
-   artist2["name"] = params["artists"]["artistsData"][1]["name"]
-   artist2["image"] = params["artists"]["artistsData"][1]["image"]
+   artist2["artist_spotify_id"] = params["artists"]["artistsData"][1]["artistId"]
+   artist2["name"] = params["artists"]["artistsData"][1]["artistName"]
+   artist2["image"] = params["artists"]["artistsData"][1]["artistUrl"]
 
-   artist3["artist_spotify_id"] = params["artists"]["artistsData"][2]["artist_spotify_id"]
-   artist3["name"] = params["artists"]["artistsData"][2]["name"]
-   artist3["image"] = params["artists"]["artistsData"][2]["image"]
+   artist3["artist_spotify_id"] = params["artists"]["artistsData"][2]["artistId"]
+   artist3["name"] = params["artists"]["artistsData"][2]["artistName"]
+   artist3["image"] = params["artists"]["artistsData"][2]["artistUrl"]
 
    artists = [artist1, artist2, artist3]
-
-    # byebug
 
     user = User.find(current_user.id)
 
