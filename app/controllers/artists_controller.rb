@@ -7,6 +7,7 @@ class ArtistsController < ApplicationController
   # end
 
   def create
+    # ArtistAdaptor.run(data)
     artist1 = {}
     artist2 = {}
     artist3 = {}

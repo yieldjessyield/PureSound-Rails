@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   skip_before_action :authenticate_user, only: [:create, :show]
-
+  validates :email, :confirmation => true
+  validates :email, :password, :phone_number, :presence => true
+  validates :email, uniqueness: true
 
   def create
     # byebug
