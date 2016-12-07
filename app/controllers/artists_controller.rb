@@ -7,6 +7,7 @@ class ArtistsController < ApplicationController
   # end
 
   def create
+      # Use activerecord for creating these objects.
     artist1 = {}
     artist2 = {}
     artist3 = {}
