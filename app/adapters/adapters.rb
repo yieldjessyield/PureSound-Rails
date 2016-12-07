@@ -1,5 +1,7 @@
 require 'json'
 
+# was going to be used for oAuth purposes, not needed currently :(
+
 module Adapters
   class SpotifyApi
     attr_accessor :token
