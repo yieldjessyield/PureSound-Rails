@@ -26,14 +26,16 @@ class UsersController < ApplicationController
 
   def update
     user = User.find(current_user.id)
-    if user_params["password_digest"] == nil
-      user.update(email: user_params["email"])
-      user.update(phone_number: user_params["phone_number"])
-      user.save
+    if user_params["password"] == nil
+      # user.update(attributes)
+      user.update(email: user_params["email"], phone_number: user_params["phone_number"])
+      # user.update()
+      # user.save
     else
-      user.update(email: user_params["email"])
-      user.update(password_digest: user_params["password_digest"])
-      user.update(phone_number: user_params["phone_number"])
+      user.update(user_params)
+      # user.update(email: user_params["email"])
+      # user.update(password_digest: user_params["password_digest"])
+      # user.update(phone_number: user_params["phone_number"])
     end
       jwt = Auth.issue({user_id: user.id})
       email = user.email
