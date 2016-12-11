@@ -59,21 +59,3 @@ class UsersController < ApplicationController
 
 
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
