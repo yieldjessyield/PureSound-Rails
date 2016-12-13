@@ -1,4 +1,4 @@
-require '../../../lib/auth'
+require 'auth'
 
 class ApplicationController < ActionController::API
 
