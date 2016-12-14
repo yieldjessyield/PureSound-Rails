@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
       jwt = Auth.issue({user_id: user.id})
       email = user.email
-      phone_number = user.phone_number
+      phone_number = 123
       id = user.id
       render json: {jwt: jwt, userId: id, userEmail: email, userPhoneNumber: phone_number}
 
