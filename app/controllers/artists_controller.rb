@@ -38,6 +38,7 @@ class ArtistsController < ApplicationController
   end
 
   # this is called after a user logs in and is used to grab the user's previously liked artists
+  #   JK: Probably good to refactor these private methods into a service object, you can ask me how to do this.
   def liked_artists
     user = User.find(current_user.id)
     liked_artists = user.artists
