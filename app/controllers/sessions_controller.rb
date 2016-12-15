@@ -7,10 +7,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(user_params['password'])
 
       jwt = Auth.issue({user_id: user.id})
-
-      email = user.email
-      phone_number = user.phone_number
-      render json: {jwt: jwt, userEmail: email, userPhoneNumber: phone_number}
+      render json: {jwt: jwt, userEmail: user.email, userPhoneNumber: user.phone_number}
     else
       render json: {error: "Really tho, nah"}
     end
